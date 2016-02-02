@@ -157,6 +157,36 @@
     	document.getElementById("tableProfiles").deleteRow(0);
 	}
 	
+	function addEntry() {
+            var browse = document.createElement("INPUT");
+            browse.setAttribute("type", "file");
+
+            picture = document.createElement("img");
+            picture.src = "";
+            picture.setAttribute("alt", "No image chosen");
+            picture.setAttribute("height","100");
+            browse.setAttribute("onchange", "previewFile(picture)");
+            document.body.appendChild(browse);
+            document.body.appendChild(picture);
+            }
+
+            function previewFile(inPic){
+
+            var preview = document.querySelector('img');
+            var file    = document.querySelector('input[type=file]').files[0]; 
+            var reader  = new FileReader();
+
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file); 
+            } else {
+                preview.src = "";
+            }
+	
 	
 </script>
 
